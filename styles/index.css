@@ -1,0 +1,80 @@
+.main-page#wrapper{
+    width: auto;
+    height: 650px;
+    background-color: lightblue;
+}
+
+.login-application#wrapper{
+    position: absolute;
+    margin: 200px 0 0 620px;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+}
+
+.login #login-button {
+    width: 50%;
+    height: 30px;
+    background-color: cadetblue;
+    font-family: 'Raleway', sans-serif;
+    font-size: small;
+    text-align: center;
+    border-radius: 5px;
+    border-bottom-width: 2px;
+    border-color: darkblue;
+    margin: 50px 0 10px 100px;
+}
+
+.login-form-block div {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+
+.login div {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 50px;
+}
+
+.login input {
+    width: 100%;
+}
+
+#register-form {
+    position: center;
+    display: flex;
+    font-family: 'Raleway', sans-serif;
+    font-size: small;
+    text-align: left;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.register #submit-button {
+    width: 50%;
+    margin-top: 20px;
+    background-color: cadetblue;
+    font-family: 'Raleway', sans-serif;
+    font-size: small;
+    text-align: center;
+    border-radius: 5px;
+    border-bottom-width: 2px;
+    border-color: darkblue;
+    margin: 0 0 0 100px;
+}
+
+
+.register div {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 50px;
+}
+
+.register input {
+    width: 100%;
+}
+
+.x-css-shadow {
+	}

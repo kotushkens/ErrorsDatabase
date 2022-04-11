@@ -38,7 +38,8 @@
     	 <cfset arrayAppend(registrationErrorMessages, 'This username already exists')/>
     </cfif>
         <cfif form.uPassword EQ form.uRepPassword>
-        	 <cfset passwordSalt = hash(generateSecretKey("AES"),"SHA-512")/>
+        	<cfset key = generateSecretKey("AES")/>
+        	 <cfset passwordSalt = hash(key, "SHA-512")/>
         	 <cfset encryptedPassword = #hash(form.uPassword & passwordSalt,"SHA-512")#/>
         	     <cfelse>
     	        <cfset arrayAppend(registrationErrorMessages, 'Passwords do not match')/>
@@ -47,8 +48,8 @@
         	 <cfset isRegistered = true />
             <cfquery>
                 INSERT INTO users
-                (login, firstname, lastname, password, role, password_salt) VALUES
-                ('#form.uLogin#', '#form.uFirstname#', '#form.uLastname#', '#encryptedPassword#', '#form.uRole#', '#passwordSalt#');
+                (login, firstname, lastname, password, role, password_salt, key) VALUES
+                ('#form.uLogin#', '#form.uFirstname#', '#form.uLastname#', '#encryptedPassword#', '#form.uRole#', '#passwordSalt#', '#key#');
         </cfquery>
       	</cfif>
     </cfif>

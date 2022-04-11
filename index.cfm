@@ -1,9 +1,3 @@
-<!---ColdFusion scripts--->
-<cfif structKeyExists(session, 'loggedInUser')>
-    <cflocation url="http://localhost:8600/GET_IT/pages/mainPage.cfm">
-</cfif>
-
-<!---End of the ColdFusion scripts--->
 <!DOCTYPE html>
 <html>
 	<head>

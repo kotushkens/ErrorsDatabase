@@ -9,16 +9,13 @@
 	<cfif form.uPassword EQ ''>
 		<cfset arrayAppend(loginErrorMessages, 'Fill the password field')/>
 	</cfif>
-</cfif>
 <!---End of the login validation--->
-<!---Password encrypt--->
-<cfset passwordSalt = hash(generateSecretKey("AES"), "SHA-512")/>
-<cfset encryptedPassword = #hash(form.uPassword & passwordSalt, "SHA-512")#/>
 <!---Data validation--->
-<cfset errorMessages = authenticationService.validateUser(form.uLogin, encryptedPassword)/>
-<cfif arrayIsEmpty(errorMessages)>
+<cfset loginErrorMessages = authenticationService.validateUser(form.uLogin, form.uPassword)/>
+<cfif arrayIsEmpty(loginErrorMessages)>
 	<!---Login--->
-	<cfset isUserLoggedIn = authenticationService.doLogin(form.uLogin, encryptedPassword)/>
+	<cfset isUserLoggedIn = authenticationService.doLogin(form.uLogin, form.uPassword)/>
+</cfif>
 </cfif>
 <!---Login page--->
 <!DOCTYPE html>
@@ -34,8 +31,8 @@
                 <label for="uPassword"><b>Password:</b></label>
                 <input type="password" placeholder="Enter password" name="uPassword" required/>
             </div>
-           <div class="login">
-					<cfif isDefined('loginErrorMessages') AND NOT arrayIsEmpty(loginErrorMessages)>
+         <div class="login">
+					<cfif structKeyExists(form, 'loginSubmit') AND NOT arrayIsEmpty(loginErrorMessages)>
 						<cfoutput>
 							<cfloop array="#loginErrorMessages#" index="message">
 								<p class="loginErrorMessage">
@@ -43,16 +40,18 @@
 								</p>
 							</cfloop>
 						</cfoutput>
-					</cfif>
+						</cfif>
 					<cfif isUserLoggedIn EQ true>
 						<cf_processsuccessful/>
+						</cfif>
+					<cfif structKeyExists(form, 'loginSubmit') AND isUserLoggedIn EQ false>
+						<p>User does not exist. Check if the login and password are correct and try again</p>
 					</cfif>
 				</div>
             <div class="login">
                 <input type="submit" class="login" name="loginSubmit" id="submit-button"
                        value="Submit"></input>
-            </div>
-            
+            </div> 
         </div>
     </cfform>
 </body>

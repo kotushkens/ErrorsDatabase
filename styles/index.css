@@ -12,19 +12,6 @@
     place-items: center;
 }
 
-.login #login-button {
-    width: 50%;
-    height: 30px;
-    background-color: cadetblue;
-    font-family: 'Raleway', sans-serif;
-    font-size: small;
-    text-align: center;
-    border-radius: 5px;
-    border-bottom-width: 2px;
-    border-color: darkblue;
-    margin: 50px 0 10px 100px;
-}
-
 .login-form-block div {
     display: flex;
     justify-content: space-between;
@@ -40,6 +27,19 @@
 
 .login input {
     width: 100%;
+}
+
+.login #submit-button {
+    width: 50%; 
+    height: 30px;
+    background-color: cadetblue;
+    font-family: 'Raleway', sans-serif;
+    font-size: small;
+    text-align: center;
+    border-radius: 5px;
+    border-bottom-width: 2px;
+    border-color: darkblue;
+    margin: 50px 0 10px 100px;
 }
 
 #register-form {
@@ -62,7 +62,6 @@
     border-radius: 5px;
     border-bottom-width: 2px;
     border-color: darkblue;
-    margin: 0 0 0 100px;
 }
 
 

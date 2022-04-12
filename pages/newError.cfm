@@ -10,10 +10,15 @@
 </cfquery>
 <!---Send data to the server--->
 <cfif structKeyExists(form, 'newErrorSubmit')>
-   <cfquery>
+   <cfquery name="newError">
                 INSERT INTO errors
                 (created_at, description, full_description, last_modified_by, status, urgency, critiality) VALUES
                 (#Now()#,'#form.eDesc#', '#form.eFullDesc#', '#session.loggedInUser.uId#', '#form.eStatus#', '#form.eUrgency#', '#form.eCritiality#')
+        </cfquery>
+        <cfquery name="updateErrorStory">
+        	INSERT INTO error_story 
+        	(date_when_modified, action, modified_by) VALUES
+        	(#Now()#, 'Created', '#session.loggedInUser.uId#')
         </cfquery>
         </cfif>
 <!DOCTYPE html>

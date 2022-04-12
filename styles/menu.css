@@ -79,6 +79,10 @@ li {
 	font-size: medium;
 }
 
+li:hover {
+	background-color: #81a8c9;
+}
+
 a {
 		text-decoration: none;
 }
